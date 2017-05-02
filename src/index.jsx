@@ -32,7 +32,7 @@ class App extends Component {
   render () {
     return (
       <div className="container">
-        <SearchBar />
+        <SearchBar onSearchInput={term => this.searchYouTube(term)} />
         <VideoDetail video={this.state.selectedVideo} />
         <VideoList
           videos={this.state.videos}
