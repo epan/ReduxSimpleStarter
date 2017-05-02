@@ -10,8 +10,9 @@ class SearchBar extends Component {
   }
 
   onInputChange (term) {
+    console.log('props from SearchBar', this.props);
     this.setState({term});
-    this.props.searchYouTube(term);
+    this.props.onSearchInput(term);
   }
 
   render () {
