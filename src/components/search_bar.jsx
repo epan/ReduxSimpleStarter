@@ -9,15 +9,17 @@ class SearchBar extends Component {
     };
   }
 
+  onInputChange (term) {
+    this.setState({term});
+    this.props.searchYouTube(term);
+  }
+
   render () {
     return (
       <div className="col-md-12">
         <input
           value={this.state.term}
-          onChange={(e) => {
-            this.setState({ term: e.target.value });
-            this.props.onSearchInput(this.state.term);
-          }}
+          onChange={e => this.onInputChange(e.target.value)}
         />
       </div>
     );
