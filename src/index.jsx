@@ -13,23 +13,27 @@ class App extends Component {
     super();
 
     this.state = {
-      videos: []
+      videos: [],
+      selectedVideo: null
     };
 
     YTSearch({key: YOUTUBE_API_KEY, term: 'surfing'}, (videos) => {
-      this.setState({ videos });
+      this.setState({
+        videos: videos,
+        selectedVideo: videos[0]
+      });
     });
   }
 
   render () {
     return (
-      <div>
+      <div className="container">
         <SearchBar />
-        <VideoDetail video={this.state.videos[0]} />
+        <VideoDetail video={this.state.selectedVideo} />
         <VideoList videos={this.state.videos} />
       </div>
     );
   }
 }
 
-ReactDOM.render(<App />, document.querySelector('.container'));
+ReactDOM.render(<App />, document.querySelector('.app'));
